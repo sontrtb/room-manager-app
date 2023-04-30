@@ -1,14 +1,23 @@
+import {useNavigation} from '@react-navigation/native';
+import {StackNavigationProp} from '@react-navigation/stack';
 import {IFluctuationRes} from 'app/src/api/fluctuation';
 import PressableGlobal from 'app/src/components/PressableGlobal';
 import TextGlobal from 'app/src/components/TextGlobal';
 import CONFIG from 'app/src/config';
+import {RootStackParamList} from 'app/src/router/routerList';
 import React from 'react';
 import {View, StyleSheet} from 'react-native';
 import IconAntDesign from 'react-native-vector-icons/AntDesign';
 
 function FluctuationItem({item}: {item: IFluctuationRes}) {
+  const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
+
+  const handleOpenDetail = (): void => {
+    navigation.navigate('FluctuationDetailScreen', {id: item.id});
+  };
+
   return (
-    <PressableGlobal style={styles.root}>
+    <PressableGlobal style={styles.root} onPress={handleOpenDetail}>
       <View style={styles.rightContent}>
         <IconAntDesign
           name={item.type === 1 ? 'caretup' : 'caretdown'}

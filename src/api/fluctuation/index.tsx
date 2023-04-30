@@ -18,14 +18,36 @@ export interface IFluctuationRes {
   };
 }
 
+export interface IFluctuationDetailRes {
+  id: number;
+  type: 0 | 1;
+  amountMoney: number;
+  content?: string;
+  createdAt: Date;
+  categoryData: {
+    name: string;
+  };
+  userData: {
+    name: string;
+  };
+}
+
 const path = {
   create: '/fluctuation/create',
   getList: '/fluctuation',
+  getDetail: '/fluctuation',
 };
 
 const getList = (): Promise<IFluctuationRes[]> => {
   return rootApi({
     url: path.getList,
+    method: 'get',
+  });
+};
+
+const getDetail = (id: number): Promise<IFluctuationDetailRes> => {
+  return rootApi({
+    url: path.getDetail + '/' + id,
     method: 'get',
   });
 };
@@ -41,4 +63,4 @@ const create = (data: ICreateFluctuationBody): Promise<unknown> => {
   );
 };
 
-export {create, getList};
+export {create, getList, getDetail};

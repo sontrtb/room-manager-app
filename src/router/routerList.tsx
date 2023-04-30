@@ -8,6 +8,7 @@ import Login from 'src/screens/auth/login';
 import HomeScreen from 'src/screens/home';
 import Fluctuation from 'app/src/screens/fluctuation';
 import MediaView from 'src/screens/media-view';
+import FluctuationDetail from 'src/screens/fluctuation-detail';
 
 export interface IRouterList {
   name: string;
@@ -18,6 +19,10 @@ export interface IRouterList {
   isModal?: boolean;
   icon?: ({isFocused}: {isFocused?: boolean}) => ReactElement;
 }
+
+export type RootStackParamList = {
+  FluctuationDetailScreen: {id: number};
+};
 
 const routerList: IRouterList[] = [
   {
@@ -60,6 +65,11 @@ const routerList: IRouterList[] = [
     isHeader: false,
     isModal: true,
     component: MediaView,
+  },
+  {
+    name: 'FluctuationDetailScreen',
+    label: 'Chi tiết',
+    component: FluctuationDetail,
   },
 ];
 

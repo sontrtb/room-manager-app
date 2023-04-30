@@ -2,7 +2,8 @@
 import IconAntDesign from 'react-native-vector-icons/AntDesign';
 
 ## navigation
-const navigation = useNavigation()
+const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
+const {params} = useRoute<RouteProp<RootStackParamList, "TagCustomerScreen">>();
 
 ## style
 import CONFIG from 'src/config';

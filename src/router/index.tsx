@@ -8,6 +8,7 @@ import CONFIG from 'src/config';
 import HeaderMessage from '../components/layout/header/HeaderMessage';
 import {memo} from 'react';
 import {useAppSelector} from 'src/hook/Redux';
+import HeaderBottomTab from '../components/layout/header/HeaderBottomTab';
 
 const Stack = createStackNavigator();
 
@@ -42,7 +43,7 @@ function MyStack() {
             component={router.component}
             options={{
               headerShown: router.isHeader,
-              headerTitle: () => <HeaderMessage title={router.label} />,
+              headerTitle: () => <HeaderBottomTab title={router.label} />,
               gestureEnabled: true,
               presentation: router.isModal ? 'modal' : 'card',
             }}

@@ -31,20 +31,6 @@ function HomeScreen() {
         />
 
         <Carousel />
-
-        {/* <TextInputGlobal
-          value={searchValue}
-          onChangeText={setSearchValue}
-          iconEnd={
-            <PressableGlobal hitSlop={10} onPress={handleSearch}>
-              <IconFontAwesome
-                name="search"
-                color={CONFIG.color.secondaryIcon}
-                size={20}
-              />
-            </PressableGlobal>
-          }
-        /> */}
       </View>
     </ScrollView>
   );
