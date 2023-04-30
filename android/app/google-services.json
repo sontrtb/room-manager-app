@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "969805984093",
+    "project_id": "room-manager-14ddc",
+    "storage_bucket": "room-manager-14ddc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:969805984093:android:e4d6e8ea9e79b8e66c78b4",
+        "android_client_info": {
+          "package_name": "com.roommanager"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "969805984093-444bbs610lk8f44o1569hp9o3u60hukq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDpHNQwY6SiCSvagzTN4FAqRWDV69Z0O3Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "969805984093-444bbs610lk8f44o1569hp9o3u60hukq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
