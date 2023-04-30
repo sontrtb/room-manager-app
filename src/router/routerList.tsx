@@ -9,6 +9,7 @@ import HomeScreen from 'src/screens/home';
 import Fluctuation from 'app/src/screens/fluctuation';
 import MediaView from 'src/screens/media-view';
 import FluctuationDetail from 'src/screens/fluctuation-detail';
+import Profile from 'src/screens/profile';
 
 export interface IRouterList {
   name: string;
@@ -21,6 +22,7 @@ export interface IRouterList {
 }
 
 export type RootStackParamList = {
+  Login: undefined;
   FluctuationDetailScreen: {id: number};
 };
 
@@ -53,6 +55,21 @@ const routerList: IRouterList[] = [
       />
     ),
   },
+  {
+    name: 'ProfileScreen',
+    label: 'Trang cá nhân',
+    component: Profile,
+    isBottom: true,
+    isHeader: true,
+    icon: props => (
+      <IconAntDesign
+        name="areachart"
+        size={25}
+        color={props.isFocused ? CONFIG.color.main : CONFIG.color.secondaryIcon}
+      />
+    ),
+  },
+
   {
     name: 'Login',
     label: 'Đăng nhập',

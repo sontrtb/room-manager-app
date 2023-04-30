@@ -1,6 +1,7 @@
 import {IGetTotalRes} from 'app/src/api/total';
 import TextGlobal from 'app/src/components/TextGlobal';
 import CONFIG from 'app/src/config';
+import numberWithCommas from 'app/src/ultis/number-format/numberWithCommas';
 import moment from 'moment';
 import React from 'react';
 import {View, StyleSheet} from 'react-native';
@@ -8,7 +9,9 @@ import {View, StyleSheet} from 'react-native';
 function TotalMoney({data}: {data?: IGetTotalRes}) {
   return (
     <View style={styles.root}>
-      <TextGlobal style={styles.textTotal}>{data?.total ?? '- - -'}</TextGlobal>
+      <TextGlobal style={styles.textTotal}>
+        {data?.total ? numberWithCommas(data.total) : '- - -'}
+      </TextGlobal>
       <TextGlobal style={styles.textTime}>
         <TextGlobal style={styles.textTime}>Cập nhật: </TextGlobal>
         {data?.updatedAt

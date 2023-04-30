@@ -15,7 +15,10 @@ const DeviceTokenSlice = createSlice({
     setToken: (state, action) => {
       state.token = action.payload;
     },
+    clearToken: state => {
+      state.token = null;
+    },
   },
 });
-export const {setToken} = DeviceTokenSlice.actions;
+export const {setToken, clearToken} = DeviceTokenSlice.actions;
 export default DeviceTokenSlice;

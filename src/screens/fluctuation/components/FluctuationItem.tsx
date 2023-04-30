@@ -5,6 +5,7 @@ import PressableGlobal from 'app/src/components/PressableGlobal';
 import TextGlobal from 'app/src/components/TextGlobal';
 import CONFIG from 'app/src/config';
 import {RootStackParamList} from 'app/src/router/routerList';
+import numberWithCommas from 'app/src/ultis/number-format/numberWithCommas';
 import React from 'react';
 import {View, StyleSheet} from 'react-native';
 import IconAntDesign from 'react-native-vector-icons/AntDesign';
@@ -36,7 +37,9 @@ function FluctuationItem({item}: {item: IFluctuationRes}) {
       <TextGlobal
         style={{
           color: item.type === 1 ? CONFIG.color.up : CONFIG.color.down,
-        }}>{`${item.type === 1 ? '+ ' : '- '}${item.amountMoney}`}</TextGlobal>
+        }}>{`${item.type === 1 ? '+ ' : '- '}${numberWithCommas(
+        item.amountMoney,
+      )}`}</TextGlobal>
     </PressableGlobal>
   );
 }

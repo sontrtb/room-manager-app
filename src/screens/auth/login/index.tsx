@@ -9,16 +9,19 @@ import IconFontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import CONFIG from 'app/src/config';
 import {ILoginBody, login} from 'app/src/api/auth';
 import {useMutation} from '@tanstack/react-query';
-import {useAppDispatch} from 'app/src/hook/Redux';
+import {useAppDispatch, useAppSelector} from 'app/src/hook/Redux';
 import {setUser} from 'app/src/redux/slices/UserSlice';
 
 function Login() {
   const navigation = useNavigation();
   const dispatch = useAppDispatch();
 
+  const device_token = useAppSelector(state => state.device_token);
+
   const [loginBody, setLoginBody] = useState<ILoginBody>({
     userName: '',
     password: '',
+    deviceToken: device_token.token ?? '',
   });
 
   const loginMutate = useMutation(login, {

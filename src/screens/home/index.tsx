@@ -7,10 +7,15 @@ import TotalMoney from './components/TotalMoney';
 import Category from './components/Category';
 import Carousel from './components/Carousel';
 import {getListCategory} from 'app/src/api/category';
+import {useAppSelector} from 'app/src/hook/Redux';
 
 function HomeScreen() {
   const totalQuery = useQuery(['get_total'], getTotal);
   const listCategoryQuery = useQuery(['get_list_category'], getListCategory);
+
+  const device_token = useAppSelector(state => state.device_token);
+
+  console.log('device_token', device_token);
 
   const onRefresh = () => {
     totalQuery.refetch();

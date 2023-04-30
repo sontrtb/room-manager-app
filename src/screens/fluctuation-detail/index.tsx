@@ -4,6 +4,7 @@ import {getDetail} from 'app/src/api/fluctuation';
 import TextGlobal from 'app/src/components/TextGlobal';
 import CONFIG from 'app/src/config';
 import {RootStackParamList} from 'app/src/router/routerList';
+import numberWithCommas from 'app/src/ultis/number-format/numberWithCommas';
 import moment from 'moment';
 import React from 'react';
 import {View, StyleSheet} from 'react-native';
@@ -30,9 +31,9 @@ function FluctuationDetail() {
           {
             color: data?.type === 1 ? CONFIG.color.up : CONFIG.color.down,
           },
-        ]}>{`${data?.type === 1 ? '+ ' : '- '}${
-        data?.amountMoney
-      }`}</TextGlobal>
+        ]}>{`${data?.type === 1 ? '+ ' : '- '}${numberWithCommas(
+        data?.amountMoney,
+      )}`}</TextGlobal>
 
       <TextGlobal style={styles.title}>Thời gian:</TextGlobal>
       <TextGlobal style={styles.des}>

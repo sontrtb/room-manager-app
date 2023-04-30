@@ -3,6 +3,7 @@ import rootApi from '../rootApi';
 export interface ILoginBody {
   userName: string;
   password: string;
+  deviceToken: string;
 }
 
 export interface ILoginRes {
