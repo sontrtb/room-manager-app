@@ -1,62 +1,52 @@
 import {useMutation, useQueryClient} from '@tanstack/react-query';
-import {ICategoryRes} from 'app/src/api/category';
 import {ICreateFluctuationBody, create} from 'app/src/api/fluctuation';
-import ButtonGlobal from 'app/src/components/ButtonGlobal';
-import ModalGlobal from 'app/src/components/ModalGlobal';
-import TextGlobal from 'app/src/components/TextGlobal';
-import TextInputGlobal from 'app/src/components/TextInputGlobal';
 import CONFIG from 'app/src/config';
-import React, {useEffect, useState} from 'react';
+import ButtonGlobal from 'app/src/components/ButtonGlobal';
+import TextInputGlobal from 'app/src/components/TextInputGlobal';
+import React, {useState} from 'react';
 import {View, StyleSheet} from 'react-native';
+import ModalGlobal from 'src/components/ModalGlobal';
+import TextGlobal from 'src/components/TextGlobal';
 
-interface IModalSpendProps {
-  openModal: {
-    isVisible: boolean;
-    category?: ICategoryRes;
-  };
+interface IModalRechargeProps {
+  isVisible: boolean;
   toggleModal: () => void;
 }
 
-function ModalSpend(props: IModalSpendProps) {
-  const {openModal, toggleModal} = props;
+function ModalRecharge(props: IModalRechargeProps) {
+  const {isVisible, toggleModal} = props;
 
   const queryClient = useQueryClient();
 
   const [bodyCreateFluctuation, setBodyCreateFluctuation] = useState<{
     content?: string;
     amountMoney: number | string;
-  }>({amountMoney: openModal.category?.price ?? 0});
-
-  useEffect(() => {
-    setBodyCreateFluctuation({amountMoney: openModal.category?.price ?? 0});
-  }, [openModal.category?.price]);
+  }>({amountMoney: 100000});
 
   const createFluctuationMutate = useMutation(create, {
     onSuccess: () => {
       toggleModal();
+      setBodyCreateFluctuation({amountMoney: 100000});
       queryClient.refetchQueries(['get_list_fluctuation']);
       queryClient.refetchQueries(['get_total']);
     },
   });
 
   const handleCreateFluctuation = (): void => {
-    if (!openModal?.category?.id || !bodyCreateFluctuation?.amountMoney) {
-      return;
-    }
     const bodySend: ICreateFluctuationBody = {
       amountMoney: Number(bodyCreateFluctuation.amountMoney),
       content: bodyCreateFluctuation.content,
-      type: 0,
-      categoryId: openModal.category.id,
+      type: 1,
+      categoryId: 1,
     };
 
     createFluctuationMutate.mutate(bodySend);
   };
 
   return (
-    <ModalGlobal isVisible={openModal.isVisible} toggleModal={toggleModal}>
+    <ModalGlobal isVisible={isVisible} toggleModal={toggleModal}>
       <View>
-        <TextGlobal style={styles.title}>{openModal.category?.name}</TextGlobal>
+        <TextGlobal style={styles.title}>Đóng tiền quỹ phòng</TextGlobal>
 
         <TextGlobal style={styles.text}>
           <TextGlobal style={styles.required}>*</TextGlobal>Số tiền:
@@ -75,7 +65,7 @@ function ModalSpend(props: IModalSpendProps) {
 
         <TextGlobal style={styles.text}>Nội dung:</TextGlobal>
         <TextInputGlobal
-          placeholder="Chi tiêu..."
+          placeholder="Đóng tiền hàng tháng..."
           value={bodyCreateFluctuation?.content}
           onChangeText={text =>
             setBodyCreateFluctuation({
@@ -127,4 +117,4 @@ const styles = StyleSheet.create({
   button: {flex: 1},
 });
 
-export default ModalSpend;
+export default ModalRecharge;

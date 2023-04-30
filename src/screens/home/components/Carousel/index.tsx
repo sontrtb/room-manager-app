@@ -108,7 +108,7 @@ const styles = StyleSheet.create({
   },
 
   dotItem: {
-    backgroundColor: CONFIG.color.secondaryMain,
+    backgroundColor: CONFIG.color.main,
     borderRadius: 3,
     height: 6,
     marginHorizontal: 2.5,

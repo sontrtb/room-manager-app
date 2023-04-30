@@ -6,7 +6,7 @@ import CONFIG from 'src/config';
 
 import Login from 'src/screens/auth/login';
 import HomeScreen from 'src/screens/home';
-import Profile from 'src/screens/profile';
+import Fluctuation from 'app/src/screens/fluctuation';
 import MediaView from 'src/screens/media-view';
 
 export interface IRouterList {
@@ -35,14 +35,14 @@ const routerList: IRouterList[] = [
     ),
   },
   {
-    name: 'Profile',
-    label: 'Trang cá nhân',
-    component: Profile,
+    name: 'Fluctuation',
+    label: 'Biến động số dư',
+    component: Fluctuation,
     isBottom: true,
     isHeader: true,
     icon: props => (
       <IconAntDesign
-        name="home"
+        name="areachart"
         size={25}
         color={props.isFocused ? CONFIG.color.main : CONFIG.color.secondaryIcon}
       />

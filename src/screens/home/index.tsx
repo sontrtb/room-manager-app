@@ -20,16 +20,15 @@ function HomeScreen() {
   return (
     <ScrollView
       refreshControl={
-        <RefreshControl
-          refreshing={totalQuery.isFetching}
-          onRefresh={onRefresh}
-        />
+        <RefreshControl refreshing={false} onRefresh={onRefresh} />
       }>
       <View style={styles.root}>
-        <View>
-          <TotalMoney data={totalQuery.data} />
-          <Category data={listCategoryQuery.data} />
-        </View>
+        <TotalMoney data={totalQuery.data} />
+
+        <Category
+          data={listCategoryQuery.data}
+          isLoading={listCategoryQuery.isLoading}
+        />
 
         <Carousel />
 

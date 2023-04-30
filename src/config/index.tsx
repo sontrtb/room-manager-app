@@ -7,8 +7,11 @@ const CONFIG = {
     widthMessage: 230,
   },
   color: {
-    main: '#3b82f6',
-    secondaryMain: '#8f8df4',
+    main: '#8f8df4',
+    secondaryMain: '#d3d2f5',
+
+    up: '#22c55e',
+    down: '#f43f5e',
 
     background: '#fff',
     secondaryBackground: 'rgb(234, 234, 234)',

@@ -7,7 +7,7 @@ import BottomTab from 'src/components/layout/BottomTab';
 import CONFIG from 'src/config';
 import HeaderMessage from '../components/layout/header/HeaderMessage';
 import {memo} from 'react';
-import {store} from 'src/redux/store';
+import {useAppSelector} from 'src/hook/Redux';
 
 const Stack = createStackNavigator();
 
@@ -21,13 +21,12 @@ const ThemeApp = {
   },
 };
 
-const state = store.getState();
-
 function MyStack() {
+  const user = useAppSelector(state => state.user);
+
   return (
     <NavigationContainer theme={ThemeApp}>
-      <Stack.Navigator
-        initialRouteName={state.user.token ? 'HomeScreen' : 'Login'}>
+      <Stack.Navigator initialRouteName={user.token ? 'HomeScreen' : 'Login'}>
         <Stack.Screen
           name="HomeScreen"
           component={BottomTab}

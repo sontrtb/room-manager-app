@@ -21,7 +21,7 @@ function TotalMoney({data}: {data?: IGetTotalRes}) {
 
 const styles = StyleSheet.create({
   root: {
-    backgroundColor: CONFIG.color.secondaryMain,
+    backgroundColor: CONFIG.color.main,
     marginHorizontal: CONFIG.layout.paddingHorizontal,
     paddingHorizontal: 20,
     paddingTop: 15,

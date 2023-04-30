@@ -9,7 +9,14 @@ import {getWindowWidth} from 'app/src/ultis/layout';
 import {ICategoryRes} from 'app/src/api/category';
 import ModalSpend from './ModalSpend';
 
-function Category({data}: {data?: ICategoryRes[]}) {
+interface ICategoryProps {
+  isLoading: boolean;
+  data?: ICategoryRes[];
+}
+
+function Category(props: ICategoryProps) {
+  const {data, isLoading} = props;
+
   const [openModal, setOpenModal] = useState<{
     isVisible: boolean;
     category?: ICategoryRes;

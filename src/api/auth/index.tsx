@@ -17,7 +17,6 @@ const path = {
 };
 
 const login = (data: ILoginBody): Promise<ILoginRes> => {
-  console.log('sdsd', data);
   return rootApi(
     {
       url: path.login,

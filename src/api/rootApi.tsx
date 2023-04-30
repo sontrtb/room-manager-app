@@ -1,11 +1,12 @@
 import axios, {AxiosError, AxiosRequestConfig} from 'axios';
 import CONFIG from 'src/config';
 import {store} from 'src/redux/store';
-import {errorToast} from 'app/src/ultis/toast';
+import {errorToast, successToast} from 'app/src/ultis/toast';
 
 interface IRootApiOptions {
   withToken?: boolean;
   displayError?: boolean;
+  displaySuccess?: boolean;
 }
 
 function rootApi(
@@ -38,6 +39,9 @@ function rootApi(
       .then(res => {
         if (res.data) {
           resolve(res.data.data);
+          if (options.displaySuccess) {
+            successToast(res.data.mess);
+          }
           return;
         }
         if (defaultOptions.displayError) {

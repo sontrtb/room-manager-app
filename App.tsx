@@ -12,6 +12,7 @@ import {SafeAreaView, StatusBar} from 'react-native';
 
 import Toast from 'react-native-toast-message';
 import Notification from 'src/firebase/Notification';
+import Recharge from './src/components/recharge';
 import MyStack from './src/router';
 
 import {QueryClient, QueryClientProvider} from '@tanstack/react-query';
@@ -28,6 +29,7 @@ function App(): JSX.Element {
             <MyStack />
             <Toast />
             <Notification />
+            <Recharge />
           </SafeAreaView>
         </PersistGate>
       </QueryClientProvider>
