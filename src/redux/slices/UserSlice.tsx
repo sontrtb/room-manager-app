@@ -19,7 +19,13 @@ const UserSlice = createSlice({
       return {...state, ...action.payload};
     },
     logout: state => {
-      state.token = null;
+      return {
+        ...state,
+        token: null,
+        role: undefined,
+        id: undefined,
+        name: undefined,
+      };
     },
   },
 });

@@ -47,10 +47,6 @@ function rootApi(
           }
           return;
         }
-        if (defaultOptions.displayError) {
-          errorToast('api no data');
-          console.log('error no data', res);
-        }
         resolve(res);
       })
       .catch((err: AxiosError) => {
