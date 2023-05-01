@@ -1,6 +1,7 @@
 import React, {ComponentType, ReactElement} from 'react';
 
 import IconAntDesign from 'react-native-vector-icons/AntDesign';
+import IconFontAwesome from 'react-native-vector-icons/FontAwesome';
 
 import CONFIG from 'src/config';
 
@@ -10,6 +11,8 @@ import Fluctuation from 'app/src/screens/fluctuation';
 import MediaView from 'src/screens/media-view';
 import FluctuationDetail from 'src/screens/fluctuation-detail';
 import Profile from 'src/screens/profile';
+import Notification from 'src/screens/notification';
+import NotificationDetail from '../screens/notification-detail';
 
 export interface IRouterList {
   name: string;
@@ -24,6 +27,8 @@ export interface IRouterList {
 export type RootStackParamList = {
   Login: undefined;
   FluctuationDetailScreen: {id: number};
+  NotificationDetailScreen: {id: number};
+  NotificationScreen: undefined;
 };
 
 const routerList: IRouterList[] = [
@@ -56,15 +61,29 @@ const routerList: IRouterList[] = [
     ),
   },
   {
+    name: 'NotificationScreen',
+    label: 'Thông báo',
+    component: Notification,
+    isBottom: true,
+    isHeader: true,
+    icon: props => (
+      <IconFontAwesome
+        name="bell"
+        size={25}
+        color={props.isFocused ? CONFIG.color.main : CONFIG.color.secondaryIcon}
+      />
+    ),
+  },
+  {
     name: 'ProfileScreen',
     label: 'Trang cá nhân',
     component: Profile,
     isBottom: true,
     isHeader: true,
     icon: props => (
-      <IconAntDesign
-        name="areachart"
-        size={25}
+      <IconFontAwesome
+        name="user"
+        size={28}
         color={props.isFocused ? CONFIG.color.main : CONFIG.color.secondaryIcon}
       />
     ),
@@ -87,6 +106,11 @@ const routerList: IRouterList[] = [
     name: 'FluctuationDetailScreen',
     label: 'Chi tiết',
     component: FluctuationDetail,
+  },
+  {
+    name: 'NotificationDetailScreen',
+    label: 'Chi tiết thông báo',
+    component: NotificationDetail,
   },
 ];
 

@@ -1,7 +1,6 @@
 import ButtonGlobal from 'app/src/components/ButtonGlobal';
 import {useAppDispatch} from 'app/src/hook/Redux';
 import {logout} from 'app/src/redux/slices/UserSlice';
-import {clearToken} from 'app/src/redux/slices/DeviceTokenSlice';
 import React from 'react';
 import {View} from 'react-native';
 import {RootStackParamList} from 'app/src/router/routerList';
@@ -14,7 +13,6 @@ function Profile() {
 
   const handleLogout = (): void => {
     dispatch(logout());
-    dispatch(clearToken());
     navigation.navigate('Login');
   };
   return (

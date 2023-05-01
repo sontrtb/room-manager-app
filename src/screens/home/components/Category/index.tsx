@@ -2,7 +2,7 @@ import PressableGlobal from 'app/src/components/PressableGlobal';
 import TextGlobal from 'app/src/components/TextGlobal';
 import CONFIG from 'app/src/config';
 import IconEntypo from 'react-native-vector-icons/Entypo';
-
+import SkeletonPlaceholder from 'react-native-skeleton-placeholder';
 import React, {useState} from 'react';
 import {View, StyleSheet} from 'react-native';
 import {getWindowWidth} from 'app/src/ultis/layout';
@@ -27,6 +27,21 @@ function Category(props: ICategoryProps) {
   const toggleModal = (): void => {
     setOpenModal({isVisible: false});
   };
+
+  if (isLoading) {
+    return (
+      <View style={styles.root}>
+        <TextGlobal style={styles.textTitle}>Chi tiêu</TextGlobal>
+        <SkeletonPlaceholder borderRadius={10}>
+          <SkeletonPlaceholder.Item
+            width={getWindowWidth / 2 - 22}
+            height={70}
+            marginTop={10}
+          />
+        </SkeletonPlaceholder>
+      </View>
+    );
+  }
 
   return (
     <View style={styles.root}>

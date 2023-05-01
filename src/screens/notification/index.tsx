@@ -1,23 +1,25 @@
+import {useQuery} from '@tanstack/react-query';
+import {INotificationRes, getList} from 'app/src/api/notification';
+import SkeletonPlaceholder from 'react-native-skeleton-placeholder';
 import React from 'react';
 import {View, StyleSheet, VirtualizedList} from 'react-native';
-import FluctuationItem from './components/FluctuationItem';
-import {useQuery} from '@tanstack/react-query';
-import {IFluctuationRes, getList} from 'app/src/api/fluctuation';
+import NoficationItem from './components/NotificationItem';
 import CONFIG from 'app/src/config';
-import SkeletonPlaceholder from 'react-native-skeleton-placeholder';
 
-function Fluctuation() {
-  const getListQuery = useQuery(['get_list_fluctuation'], getList);
+function Notification() {
+  const getListNotificationQuery = useQuery(['get_list_notification'], () =>
+    getList(),
+  );
 
   const handleRefetch = (): void => {
-    getListQuery.refetch();
+    getListNotificationQuery.refetch();
   };
 
   const getItemCount = (_data: string | any[]): number => _data?.length ?? 0;
 
-  const getItem = (_data: IFluctuationRes[], index: number) => _data[index];
+  const getItem = (_data: INotificationRes[], index: number) => _data[index];
 
-  if (getListQuery.isLoading) {
+  if (getListNotificationQuery.isLoading) {
     return (
       <View style={styles.root}>
         <SkeletonPlaceholder borderRadius={10}>
@@ -34,13 +36,16 @@ function Fluctuation() {
   return (
     <View style={styles.root}>
       <VirtualizedList
-        data={getListQuery.data}
+        data={getListNotificationQuery.data}
         initialNumToRender={10}
-        renderItem={({item}) => <FluctuationItem item={item} />}
+        renderItem={({item}) => <NoficationItem item={item} />}
         keyExtractor={item => `${item.id}`}
         getItemCount={getItemCount}
         getItem={getItem}
-        refreshing={getListQuery.isFetching && !getListQuery.isLoading}
+        refreshing={
+          getListNotificationQuery.isFetching &&
+          !getListNotificationQuery.isLoading
+        }
         onRefresh={handleRefetch}
         showsVerticalScrollIndicator={false}
       />
@@ -55,4 +60,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Fluctuation;
+export default Notification;

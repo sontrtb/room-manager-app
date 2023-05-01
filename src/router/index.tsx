@@ -1,14 +1,13 @@
 import * as React from 'react';
 import {NavigationContainer, DefaultTheme} from '@react-navigation/native';
-// import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {createStackNavigator} from '@react-navigation/stack';
 import routerList from 'src/router/routerList';
 import BottomTab from 'src/components/layout/BottomTab';
 import CONFIG from 'src/config';
-import HeaderMessage from '../components/layout/header/HeaderMessage';
 import {memo} from 'react';
 import {useAppSelector} from 'src/hook/Redux';
 import HeaderBottomTab from '../components/layout/header/HeaderBottomTab';
+import Notification from 'src/firebase/Notification';
 
 const Stack = createStackNavigator();
 
@@ -50,6 +49,8 @@ function MyStack() {
           />
         ))}
       </Stack.Navigator>
+
+      <Notification />
     </NavigationContainer>
   );
 }

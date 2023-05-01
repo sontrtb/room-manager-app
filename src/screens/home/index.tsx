@@ -7,19 +7,21 @@ import TotalMoney from './components/TotalMoney';
 import Category from './components/Category';
 import Carousel from './components/Carousel';
 import {getListCategory} from 'app/src/api/category';
-import {useAppSelector} from 'app/src/hook/Redux';
+import {getList} from 'app/src/api/notification';
 
 function HomeScreen() {
   const totalQuery = useQuery(['get_total'], getTotal);
   const listCategoryQuery = useQuery(['get_list_category'], getListCategory);
 
-  const device_token = useAppSelector(state => state.device_token);
-
-  console.log('device_token', device_token);
+  const paramNoti = {limit: 5};
+  const carouselQuery = useQuery(['get_list_notification', paramNoti], () =>
+    getList(paramNoti),
+  );
 
   const onRefresh = () => {
     totalQuery.refetch();
     listCategoryQuery.refetch();
+    carouselQuery.refetch();
   };
 
   return (
@@ -35,7 +37,7 @@ function HomeScreen() {
           isLoading={listCategoryQuery.isLoading}
         />
 
-        <Carousel />
+        <Carousel data={carouselQuery.data} />
       </View>
     </ScrollView>
   );

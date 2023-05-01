@@ -7,7 +7,7 @@ import PressableGlobal from '../PressableGlobal';
 import ModalRecharge from './components/ModalRecharge';
 import {useAppSelector} from 'app/src/hook/Redux';
 
-function Recharge() {
+function IconCreate() {
   const user = useAppSelector(state => state.user);
 
   const pan = useRef(new Animated.ValueXY()).current;
@@ -89,4 +89,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Recharge;
+export default IconCreate;

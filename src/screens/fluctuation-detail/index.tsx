@@ -15,7 +15,7 @@ function FluctuationDetail() {
 
   const getFluctuationDetail = () => getDetail(params.id);
   const {data} = useQuery(
-    ['get_list_fluctuation', params.id],
+    ['get_detail_fluctuation', params.id],
     getFluctuationDetail,
   );
 

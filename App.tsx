@@ -11,8 +11,7 @@ import {persistor} from 'src/redux/store';
 import {SafeAreaView, StatusBar} from 'react-native';
 
 import Toast from 'react-native-toast-message';
-import Notification from 'src/firebase/Notification';
-import Recharge from './src/components/recharge';
+import IconCreate from './src/components/IconCreate';
 import MyStack from './src/router';
 
 import {QueryClient, QueryClientProvider} from '@tanstack/react-query';
@@ -28,8 +27,7 @@ function App(): JSX.Element {
             <StatusBar />
             <MyStack />
             <Toast />
-            <Notification />
-            <Recharge />
+            <IconCreate />
           </SafeAreaView>
         </PersistGate>
       </QueryClientProvider>
