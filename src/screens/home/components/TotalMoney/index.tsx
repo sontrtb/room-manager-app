@@ -31,6 +31,14 @@ const styles = StyleSheet.create({
     paddingBottom: 20,
     borderRadius: 20,
     marginBottom: 20,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 6,
+    },
+    shadowOpacity: 0.39,
+    shadowRadius: 8.3,
+    elevation: 13,
   },
   textTotal: {
     fontSize: 50,

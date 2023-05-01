@@ -6,6 +6,12 @@ export interface ILoginBody {
   deviceToken: string;
 }
 
+export interface IRegisterBody {
+  name: string;
+  userName: string;
+  password: string;
+}
+
 export interface ILoginRes {
   token: string;
   name: string;
@@ -15,6 +21,7 @@ export interface ILoginRes {
 
 const path = {
   login: '/auth/login',
+  register: '/auth/register',
 };
 
 const login = (data: ILoginBody): Promise<ILoginRes> => {
@@ -28,4 +35,15 @@ const login = (data: ILoginBody): Promise<ILoginRes> => {
   );
 };
 
-export {login};
+const register = (data: IRegisterBody): Promise<unknown> => {
+  return rootApi(
+    {
+      url: path.register,
+      method: 'post',
+      data: data,
+    },
+    {displaySuccess: true},
+  );
+};
+
+export {login, register};

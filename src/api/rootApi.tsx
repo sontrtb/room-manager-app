@@ -7,6 +7,7 @@ interface IRootApiOptions {
   withToken?: boolean;
   displayError?: boolean;
   displaySuccess?: boolean;
+  isFormData?: boolean;
 }
 
 function rootApi(
@@ -21,7 +22,9 @@ function rootApi(
 
   const apiClient = axios.create({
     headers: {
-      'Content-Type': 'application/json',
+      'Content-Type': defaultOptions.isFormData
+        ? 'multipart/form-data'
+        : 'application/json',
     },
     baseURL: CONFIG.network.base_url,
     timeout: CONFIG.network.timeout,

@@ -53,22 +53,25 @@ function NotificationDetail() {
         <TextGlobal style={styles.user}>
           {`Người tạo: ${data?.userData.name}`}
         </TextGlobal>
-        <Image
-          source={{uri: data?.image}}
-          style={[
-            styles.image,
-            {
-              width: getWindowWidth - CONFIG.layout.paddingHorizontal * 2,
-              aspectRatio,
-            },
-          ]}
-        />
+
+        {data?.image && (
+          <Image
+            source={{uri: data?.image}}
+            style={[
+              styles.image,
+              {
+                width: getWindowWidth - CONFIG.layout.paddingHorizontal * 2,
+                aspectRatio,
+              },
+            ]}
+          />
+        )}
+
         <TextGlobal style={styles.content}>{data?.content}</TextGlobal>
 
-        <LinkPreview
-          text={data?.link ?? ''}
-          containerStyle={styles.linkPreview}
-        />
+        {data?.link && (
+          <LinkPreview text={data.link} containerStyle={styles.linkPreview} />
+        )}
       </View>
     </ScrollView>
   );

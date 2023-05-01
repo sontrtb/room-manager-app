@@ -6,8 +6,14 @@ export interface ICategoryRes {
   price: number;
 }
 
+export interface ICreateCategoryBody {
+  name: string;
+  price: number;
+}
+
 const path = {
   getListCategory: '/category',
+  createCategory: '/category/create',
 };
 
 const getListCategory = (): Promise<ICategoryRes[]> => {
@@ -17,4 +23,15 @@ const getListCategory = (): Promise<ICategoryRes[]> => {
   });
 };
 
-export {getListCategory};
+const createCategory = (body: ICreateCategoryBody): Promise<unknown> => {
+  return rootApi(
+    {
+      url: path.createCategory,
+      method: 'post',
+      data: body,
+    },
+    {displaySuccess: true},
+  );
+};
+
+export {getListCategory, createCategory};

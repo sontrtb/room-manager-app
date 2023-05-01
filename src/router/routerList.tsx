@@ -10,9 +10,11 @@ import HomeScreen from 'src/screens/home';
 import Fluctuation from 'app/src/screens/fluctuation';
 import MediaView from 'src/screens/media-view';
 import FluctuationDetail from 'src/screens/fluctuation-detail';
-import Profile from 'src/screens/profile';
 import Notification from 'src/screens/notification';
 import NotificationDetail from '../screens/notification-detail';
+import Setting from 'app/src/screens/setting';
+import Register from '../screens/auth/Register';
+import NotificationCreate from '../screens/notificaion-create';
 
 export interface IRouterList {
   name: string;
@@ -29,6 +31,9 @@ export type RootStackParamList = {
   FluctuationDetailScreen: {id: number};
   NotificationDetailScreen: {id: number};
   NotificationScreen: undefined;
+  SettingScreen: undefined;
+  RegisterScreen: undefined;
+  NotificationCreateScreen: undefined;
 };
 
 const routerList: IRouterList[] = [
@@ -75,25 +80,30 @@ const routerList: IRouterList[] = [
     ),
   },
   {
-    name: 'ProfileScreen',
-    label: 'Trang cá nhân',
-    component: Profile,
+    name: 'SettingScreen',
+    label: 'Cài đặt',
+    component: Setting,
     isBottom: true,
     isHeader: true,
     icon: props => (
-      <IconFontAwesome
-        name="user"
+      <IconAntDesign
+        name="setting"
         size={28}
         color={props.isFocused ? CONFIG.color.main : CONFIG.color.secondaryIcon}
       />
     ),
   },
-
   {
     name: 'Login',
     label: 'Đăng nhập',
     isHeader: false,
     component: Login,
+  },
+  {
+    name: 'RegisterScreen',
+    label: 'Đăng ký',
+    isHeader: false,
+    component: Register,
   },
   {
     name: 'MediaViewScreen',
@@ -111,6 +121,11 @@ const routerList: IRouterList[] = [
     name: 'NotificationDetailScreen',
     label: 'Chi tiết thông báo',
     component: NotificationDetail,
+  },
+  {
+    name: 'NotificationCreateScreen',
+    label: 'Tạo thông báo',
+    component: NotificationCreate,
   },
 ];
 
