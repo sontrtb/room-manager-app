@@ -2,7 +2,7 @@ import {useNavigation} from '@react-navigation/native';
 import ButtonGlobal from 'app/src/components/ButtonGlobal';
 import TextGlobal from 'app/src/components/TextGlobal';
 import TextInputGlobal from 'app/src/components/TextInputGlobal';
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {View} from 'react-native';
 import styles from 'src/styles/screens/auth/login';
 import IconFontAwesome5 from 'react-native-vector-icons/FontAwesome5';
@@ -23,6 +23,14 @@ function Login() {
     password: '',
     deviceToken: device_token.token ?? '',
   });
+
+  useEffect(() => {
+    setLoginBody({
+      userName: '',
+      password: '',
+      deviceToken: device_token.token ?? '',
+    });
+  }, [device_token]);
 
   const loginMutate = useMutation(login, {
     onSuccess: res => {
