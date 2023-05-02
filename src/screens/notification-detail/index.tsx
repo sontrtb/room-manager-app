@@ -10,7 +10,11 @@ import moment from 'moment';
 import React from 'react';
 import {LinkPreview} from '@flyerhq/react-native-link-preview';
 import {View, StyleSheet, Image, ScrollView} from 'react-native';
+import IconAntDesign from 'react-native-vector-icons/AntDesign';
 import SkeletonPlaceholder from 'react-native-skeleton-placeholder';
+import PressableGlobal from 'app/src/components/PressableGlobal';
+import Clipboard from '@react-native-clipboard/clipboard';
+import {infoToast} from 'app/src/ultis/toast';
 
 function NotificationDetail() {
   const {params} =
@@ -23,6 +27,13 @@ function NotificationDetail() {
   );
 
   const aspectRatio = useImageAspectRatio(data?.image ?? '');
+
+  const handleCopy = () => {
+    if (data?.link) {
+      Clipboard.setString(data.link);
+      infoToast('Đã sao chép');
+    }
+  };
 
   if (isLoading) {
     return (
@@ -56,7 +67,7 @@ function NotificationDetail() {
 
         {data?.image && (
           <Image
-            source={{uri: data?.image}}
+            source={{uri: data.image}}
             style={[
               styles.image,
               {
@@ -70,7 +81,21 @@ function NotificationDetail() {
         <TextGlobal style={styles.content}>{data?.content}</TextGlobal>
 
         {data?.link && (
-          <LinkPreview text={data.link} containerStyle={styles.linkPreview} />
+          <View>
+            <PressableGlobal onPress={handleCopy}>
+              <TextGlobal style={styles.content}>
+                Link đi kèm:{' '}
+                <TextGlobal style={styles.link}>{data.link}</TextGlobal>
+                <TextGlobal>{'   '}</TextGlobal>
+                <IconAntDesign
+                  name="copy1"
+                  size={16}
+                  color={CONFIG.color.secondaryText}
+                />
+              </TextGlobal>
+            </PressableGlobal>
+            <LinkPreview text={data.link} containerStyle={styles.linkPreview} />
+          </View>
         )}
       </View>
     </ScrollView>
@@ -99,6 +124,10 @@ const styles = StyleSheet.create({
   },
   content: {
     marginBottom: 15,
+  },
+  link: {
+    color: 'blue',
+    textDecorationLine: 'underline',
   },
   linkPreview: {
     borderColor: CONFIG.color.main,
