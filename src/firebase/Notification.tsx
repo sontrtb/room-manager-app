@@ -15,6 +15,12 @@ function Notification() {
   const queryClient = useQueryClient();
 
   useEffect(() => {
+    const getDeviceToken = messaging()
+      .getToken()
+      .then(token => {
+        dispatch(setToken(token));
+      });
+
     messaging()
       .getInitialNotification()
       .then(remoteMessage => {
@@ -39,12 +45,6 @@ function Notification() {
       );
       queryClient.refetchQueries(['get_list_notification']);
     });
-
-    const getDeviceToken = messaging()
-      .getToken()
-      .then(token => {
-        dispatch(setToken(token));
-      });
 
     return () => {
       unsubscribe();
