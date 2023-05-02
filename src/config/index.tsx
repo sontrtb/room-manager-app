@@ -32,7 +32,7 @@ const CONFIG = {
   },
 
   network: {
-    base_url: 'http://192.168.30.113:3001/api/v1',
+    base_url: 'https://api-rm.vnsvs.net/api/v1',
     timeout: 30000,
     with_token: true,
     display_error: true,

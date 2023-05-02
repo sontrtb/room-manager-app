@@ -10,7 +10,9 @@ function TotalMoney({data}: {data?: IGetTotalRes}) {
   return (
     <View style={styles.root}>
       <TextGlobal style={styles.textTotal}>
-        {data?.total ? numberWithCommas(data.total) : '- - -'}
+        {data?.total || data?.total === 0
+          ? numberWithCommas(data.total)
+          : '- - -'}
       </TextGlobal>
       <TextGlobal style={styles.textTime}>
         <TextGlobal style={styles.textTime}>Cập nhật: </TextGlobal>

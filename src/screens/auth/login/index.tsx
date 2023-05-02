@@ -18,6 +18,8 @@ function Login() {
 
   const device_token = useAppSelector(state => state.device_token);
 
+  console.log('device_token', device_token);
+
   const [loginBody, setLoginBody] = useState<ILoginBody>({
     userName: '',
     password: '',
