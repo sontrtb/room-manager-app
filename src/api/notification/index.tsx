@@ -60,23 +60,16 @@ const getDetail = (id: number): Promise<IDetailNotificationRes> => {
 const create = (data: INotificationCreateBody): Promise<unknown> => {
   const form = new FormData();
 
-  form.append('title', data.title);
-  data.content && form.append('content', data.content);
-  data.link && form.append('link', data.link);
-
-  data.image &&
-    console.log('sds', {
-      name: data.image.fileName,
-      type: data.image.type,
-      uri: isIos ? data.image.uri?.replace('file://', '') : data.image.uri,
-    });
-
   data.image &&
     form.append('image', {
       name: data.image.fileName,
       type: data.image.type,
       uri: isIos ? data.image.uri?.replace('file://', '') : data.image.uri,
     });
+
+  form.append('title', data.title);
+  data.content && form.append('content', data.content);
+  data.link && form.append('link', data.link);
 
   return rootApi(
     {

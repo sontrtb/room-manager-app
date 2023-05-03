@@ -1,5 +1,5 @@
 import {useNavigation} from '@react-navigation/native';
-import {useMutation, useQueryClient} from '@tanstack/react-query';
+import {useMutation} from '@tanstack/react-query';
 import {INotificationCreateBody, create} from 'app/src/api/notification';
 import ButtonGlobal from 'app/src/components/ButtonGlobal';
 import ModalGlobal from 'app/src/components/ModalGlobal';
