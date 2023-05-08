@@ -7,7 +7,6 @@ import CONFIG from 'src/config';
 import {memo} from 'react';
 import {useAppSelector} from 'src/hook/Redux';
 import HeaderBottomTab from '../components/layout/header/HeaderBottomTab';
-import Notification from 'src/firebase/Notification';
 
 const Stack = createStackNavigator();
 
@@ -49,8 +48,6 @@ function MyStack() {
           />
         ))}
       </Stack.Navigator>
-
-      <Notification />
     </NavigationContainer>
   );
 }

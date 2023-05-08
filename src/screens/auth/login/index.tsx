@@ -23,14 +23,14 @@ function Login() {
   const [loginBody, setLoginBody] = useState<ILoginBody>({
     userName: '',
     password: '',
-    deviceToken: device_token.token ?? '',
+    deviceToken: device_token.token,
   });
 
   useEffect(() => {
     setLoginBody({
       userName: '',
       password: '',
-      deviceToken: device_token.token ?? '',
+      deviceToken: device_token.token,
     });
   }, [device_token]);
 
